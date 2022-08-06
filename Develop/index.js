@@ -1,56 +1,112 @@
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for information about my application repository
-// THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-// WHEN I enter my project title
-// THEN this is displayed as the title of the README
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-// WHEN I choose a license for my application from a list of options
-// THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-// WHEN I enter my GitHub username
-// THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-// WHEN I enter my email address
-// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-// WHEN I click on the links in the Table of Contents
-// THEN I am taken to the corresponding section of the README
-
-
 // TODO: Include packages needed for this application
-const inquirer = require('inquirer');
-const fs= require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const { json } = require("stream/consumers");
 // TODO: Create an array of questions for user input
 inquirer
- .prompt([
+  .prompt([
     {
-        type: 'input', 
-        name:'motivation',
-        message: 'What was your motivation?',
+      type: "input",
+      name: "filename",
+      message: "Enter your file name:",
     },
     {
-        type:'input',
-        name: 'build',
-        message: 'Why did you build this project?',
+      type: "input",
+      name: "description",
+      message: "Describe your project:",
     },
     {
-        type: 'input',
-        name: 'solve',
-        message: 'What problems does it solve?'
+        type: "input",
+        name: "installation",
+        message: "How can a user install your app?",
+      },
+    {
+      type: "input",
+      name: "usage",
+      message: "Add usage instructions:",
     },
     {
-        type: 'input',
-        name: 'learn',
-        message: 'What did you learn?',
-    }
-])
+      type: "list",
+      name: "license",
+      message: "Choose a license:",
+      choices: [
+        "MIT",
+        "GPLv2",
+        "Apache",
+        "GPLv3",
+        "BSD 3-clause",
+        "Unlicensed",
+      ],
+    },
+    {
+      type: "input",
+      name: "contributing",
+      message: "Add instructions for potential contributors:",
+    },
+    {
+      type: "input",
+      name: "tests",
+      message: "Describe how a user can test your application:",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "Enter your GitHub username:",
+    },
+    {
+      type: "input",
+      name: "emailAddress",
+      message: "Enter your email address:",
+    },
+  ])
+// TODO: Create a readme page
+.then((data) => {
+const readmeArea = ({
+        filename,
+        description,
+        installation,
+        usage,
+        license,
+        contributing,
+        tests,
+        github,
+        emailAddress,
+      }) =>
+      `
+# ${filename}
+## Description
+${description}
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributors](#contributors)
+* [Tests](#tests)
+* [Questions](#questions)
+## Installation
+${installation}
+## Usage
+${usage}
+## License
+This application is covered under the [${license}] license.
+## Contributing
+${contributing}
+## Tests
+${tests}
+## Questions
+${github}
+${emailAddress}
+        `
 // TODO: Create a function to write README file
-  .then((data) => {
-    const filename = `${data.motivation.toLowerCase().split(' ').join('')}.md`;
-console.log(data)
-    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
-      err ? console.log(err) : console.log('Success!')
+    let readmeAreaContent = readmeArea(data);
+    const filename = `${data.filename.toLowerCase().split(" ").join("")}.md`;
+    console.log(data)
+    fs.writeFile(filename, JSON.stringify(readmeAreaContent, null, "\t"),
+    (err) => err ? console.log(err) : console.log("Success!")
     );
-  });
+});
 
+    
 
 // TODO: Create a function to initialize app
 function init() {}
@@ -58,3 +114,29 @@ function init() {}
 // Function call to initialize app
 init();
 
+
+function renderLicenseBadge(license) {
+  switch (license) {
+    case "MIT":
+     return licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      break;
+    case "GPLv2":
+       return licenseBadge = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)";
+      break;
+    case "Apache":
+      return licenseBadge = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+      break;
+    case "GPLv3":
+     return licenseBadge =  "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "BSD 3-clause":
+      return licenseBadge =  "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+      break;
+    case "Unlicense":
+      return licenseBadge = licenseBadge = "";
+  }
+  }
+// TODO: Create a function to initialize app
+function init() {}
+// Function call to initialize app
+init();
