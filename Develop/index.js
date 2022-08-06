@@ -44,7 +44,7 @@ inquirer
 ])
 // TODO: Create a function to write README file
   .then((data) => {
-    const filename = `${data.who.toLowerCase().split(' ').join('')}.json`;
+    const filename = `${data.motivation.toLowerCase().split(' ').join('')}.md`;
 console.log(data)
     fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
       err ? console.log(err) : console.log('Success!')
