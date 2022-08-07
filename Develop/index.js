@@ -101,8 +101,8 @@ ${emailAddress}
     let readmeAreaContent = readmeArea(data);
     const filename = `${data.filename.toLowerCase().split(" ").join("")}.md`;
     console.log(data)
-    fs.writeFile(filename, JSON.stringify(readmeAreaContent, null, "\t"),
-    (err) => err ? console.log(err) : console.log("Success!")
+    fs.writeFile(filename,readmeAreaContent, null, (err) => 
+    err ? console.log(err) : console.log("Success!")
     );
 });
 
