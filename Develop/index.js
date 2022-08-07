@@ -82,7 +82,7 @@ ${description}
 * [License](#license)
 * [Contributors](#contributors)
 * [Tests](#tests)
-* [Questions](#questions)
+* [GitHub](#Github)
 ## Installation
 ${installation}
 ## Usage
@@ -93,7 +93,7 @@ This application is covered under the [${license}] license.
 ${contributing}
 ## Tests
 ${tests}
-## Questions
+##GitHub
 ${github}
 ${emailAddress}
         `
