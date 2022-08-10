@@ -93,7 +93,7 @@ This application is covered under the [${license}] license.
 ${contributing}
 ## Tests
 ${tests}
-##GitHub
+## Github
 ${github}
 ${emailAddress}
         `
