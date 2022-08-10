@@ -1,7 +1,9 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const util = require("util");
 const { json } = require("stream/consumers");
+const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 inquirer
   .prompt([
@@ -59,6 +61,7 @@ inquirer
       message: "Enter your email address:",
     },
   ])
+
 // TODO: Create a readme page
 .then((data) => {
 const readmeArea = ({
@@ -89,6 +92,7 @@ ${installation}
 ${usage}
 ## License
 This application is covered under the [${license}] license.
+![GitHub license](${data.license})
 ## Contributing
 ${contributing}
 ## Tests
@@ -107,6 +111,14 @@ ${emailAddress}
 });
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  // inquirer.prompt(questions)
+  //     .then(function(data) {
+  //         writeToFile("README.md", generateMarkdown(data));
+  //         console.log(data)
+
+  //     })
+
+}
 // Function call to initialize app
 init();

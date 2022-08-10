@@ -15,6 +15,7 @@ We want to make a app that generates a README for the user
  
 ## License
  This application is covered under the [MIT] license.
+ ![GitHub license](MIT)
 ## Contributing
  Just answer the questions and it should populate the README page
 ## Tests
