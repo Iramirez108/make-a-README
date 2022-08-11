@@ -1,9 +1,31 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
 const { json } = require("stream/consumers");
-const generateMarkdown = require('./utils/generateMarkdown');
+
+
+
+function renderLicenseBadge(license) {
+  switch (license) {
+    case "MIT":
+     return licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      break;
+    case "GPLv2":
+       return licenseBadge = "[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)";
+      break;
+    case "Apache":
+      return licenseBadge = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+      break;
+    case "GPLv3":
+     return licenseBadge =  "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "BSD 3-clause":
+      return licenseBadge =  "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+      break;
+    case "Unlicense":
+      return licenseBadge = licenseBadge = "";
+  }
+  }
 // TODO: Create an array of questions for user input
 inquirer
   .prompt([
@@ -62,6 +84,7 @@ inquirer
     },
   ])
 
+  
 // TODO: Create a readme page
 .then((data) => {
 const readmeArea = ({
@@ -91,8 +114,7 @@ ${installation}
 ## Usage
 ${usage}
 ## License
-This application is covered under the [${license}] license.
-![GitHub license](${data.license})
+This application is covered under the [${license}] license. ${renderLicenseBadge(license)}
 ## Contributing
 ${contributing}
 ## Tests
@@ -110,15 +132,15 @@ ${emailAddress}
     );
 });
 
-// TODO: Create a function to initialize app
-function init() {
-  // inquirer.prompt(questions)
-  //     .then(function(data) {
-  //         writeToFile("README.md", generateMarkdown(data));
-  //         console.log(data)
+// // TODO: Create a function to initialize app
+// function init() {
+//   // inquirer.prompt(questions)
+//   //     .then(function(data) {
+//   //         writeToFile("README.md", generateMarkdown(data));
+//   //         console.log(data)
 
-  //     })
+//   //     })
 
-}
-// Function call to initialize app
-init();
+// }
+// // Function call to initialize app
+// init();
