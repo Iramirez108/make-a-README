@@ -16,7 +16,7 @@
     Code the repo 
 
 ## Usage
-    Use the terminal and answer the questions 
+    Use the terminal and answer the questions. Watch the video below to see how to use it if you have any questions.
 
 ## License
    This application is covered under the [MIT] license. 
@@ -25,7 +25,7 @@
     use the terminal to answer the questions that you need to fill in the README
 
 ## Tests
-   through the terminal
+   Watch the video below to see how to use it.
 
 ## Questions
 Please reach out to me with questions or comments. My GitHub user name is [undefined](https://github.com/undefined). My email address is ivan.ramriez10208@gmail.com.
