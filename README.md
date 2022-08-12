@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
 ## Description
-    We need to make a Generator to make a README
+    We need to make a Generator to make a README.
 
 ## Table of Contents
 * [Installation](#installation)
