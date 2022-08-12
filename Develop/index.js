@@ -74,7 +74,7 @@ inquirer
     },
     {
       type: "input",
-      name: "github",
+      name: "GitHub",
       message: "Enter your GitHub username:",
     },
     {
@@ -100,28 +100,36 @@ const readmeArea = ({
       }) =>
       `
 # ${filename}
+${renderLicenseBadge(license)}
+  
 ## Description
-${description}
+    ${description}
+
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
 * [Contributors](#contributors)
 * [Tests](#tests)
-* [GitHub](#Github)
+* [Questions](#Questions)
+
 ## Installation
-${installation}
+    ${installation}
+
 ## Usage
-${usage}
+    ${usage}
+
 ## License
-This application is covered under the [${license}] license. ${renderLicenseBadge(license)}
-## Contributing
-${contributing}
+   This application is covered under the [${license}] license. 
+
+## Contributors
+    ${contributing}
+
 ## Tests
-${tests}
-## Github
-${github}
-${emailAddress}
+   ${tests}
+
+## Questions
+Please reach out to me with questions or comments. My GitHub user name is [${github}](https://github.com/${github}). My email address is ${emailAddress}.
         `
 // TODO: Create a function to write README file
     let readmeAreaContent = readmeArea(data);
